@@ -20,7 +20,7 @@ jobs:
           submodules: true
       - name: Build And Deploy
         id: builddeploy
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: t-amsolo/anotherdeploy@master
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_TREE_081663110 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
@@ -30,6 +30,8 @@ jobs:
           app_location: "app" # App source code path
           api_location: "api" # Api source code path - optional
           app_artifact_location: "" # Built app content directory - optional
+        env:  
+          FUNCTION_LANGUAGE: ""
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
@@ -39,7 +41,7 @@ jobs:
     steps:
       - name: Close Pull Request
         id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        uses: t-amsolo/anotherdeploy@master
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_TREE_081663110 }}
           action: "close"
